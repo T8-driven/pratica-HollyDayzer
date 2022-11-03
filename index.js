@@ -34,10 +34,10 @@ app.get("/is-today-holiday", (req, res) => {
 });
 
 // bonus
-app.get("/holidays/:mes", (req, res) => {
-  const mes = req.params.mes;
+app.get("/holidays/:month", (req, res) => {
+  const month = req.params.month;
 
-  const holidaysMonth = holidays.filter((object) => object.date.split("/")[0] === mes);
+  const holidaysMonth = holidays.filter((object) => object.date.split("/")[0] === month);
 
   res.send(holidaysMonth);
 });
