@@ -26,7 +26,7 @@ app.get("/is-today-holiday", (req, res) => {
   const hoje = new Date().toLocaleDateString("en-us");
   const isHoliday = holidays.find((object) => object.date === hoje);
 
-  if(isHoliday){
+  if (isHoliday) {
     result = `Sim, hoje é feriado de ${isHoliday.name}`;
   }
 
@@ -34,5 +34,12 @@ app.get("/is-today-holiday", (req, res) => {
 });
 
 // bonus
+app.get("/holidays/:mes", (req, res) => {
+  const mes = req.params.mes;
+
+  const holidaysMonth = holidays.filter((object) => object.date.split("/")[0] === mes);
+
+  res.send(holidaysMonth);
+});
 
 app.listen(5000, () => console.log("App running in port: 5000"));
